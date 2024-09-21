@@ -3,3 +3,5 @@ We work at a winery and that winery began to detect some problems in the quality
 Because of this, it was determined that it would be interesting to build something capable of quickly classifying problems in grape leaves. This would allow plants to be treated quickly and efficiently. So, let's build a convolutional neural network, which is known to perform this image classification process very efficiently.
 
 To begin to understand this problem, let's query our data and see how this data is available to us.
+
+download data = https://cdn3.gnarususercontent.com.br/3773-tensorflow-keras-imagens-redes-convolucionais/Projeto/uvas.zip
