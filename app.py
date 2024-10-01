@@ -34,7 +34,7 @@ def load_image():
 
         return image
     
-def forecast(interpreter, image)
+def forecast(interpreter, image):
     input_details = interpreter.get_input_details()
     output_details =interpreter.get_output_details()
 
