@@ -1,0 +1,7 @@
+streamlit
+gdown
+tensorflow
+pillow
+numpy
+pandas
+plotly
