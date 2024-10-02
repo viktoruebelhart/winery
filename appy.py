@@ -57,7 +57,7 @@ def main():
     st.set_page_config(
         page_title="Classify vine leaves"
     )
-    st.write("# Classify vine leaves! ��")
+    st.write("# Classify vine leaves!   ")
     #load model
     interpreter = load_model()
     #load image 
