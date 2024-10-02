@@ -10,7 +10,7 @@ import plotly.express as px
 @st.cache_resource
 def load_model():
     #https://drive.google.com/file/d/1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h/view?usp=drive_link
-    url = 'https://drive.google.com/uc?id=1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h'
+    url = 'https://drive.google.com/file/d/1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h/view?usp=drive_link'
 
     gdown.download(url, 'model_16bits.tflite')
     interpreter = tf.lite.Intepreter(model_path = 'model_16bits.tflite')
@@ -28,43 +28,44 @@ def load_image():
         st.image(image)
         st.success('The image was loaded successfully')
 
-        image = np.array(image, dtype= np.float32)
-        image = image /255.0
+        image = np.array(image, dtype=np.float32)
+        image = image / 255.0
         image = np.expand_dims(image, axis=0)
 
         return image
     
-def forecast(interpreter, image):
+def forecast(interpreter,image):
     input_details = interpreter.get_input_details()
-    output_details =interpreter.get_output_details()
+    output_details = interpreter.get_output_details()
 
-    interpreter.set_tensor(input_details[0]['index'], image)
+    interpreter.set_tensor(input_details[0]['index'],image)
 
     interpreter.invoke()
 
     output_data = interpreter.get_tensor(output_details[0]['index'])
     classes = ['BlackMeasles', 'BlackRot', 'HealthyGrapes', 'LeafBlight']
 
-    df=pd.DataFrame()
+    df = pd.DataFrame()
     df['classes'] = classes
     df['probability (%)'] = 100*output_data[0]
 
-    fig = px.bar(df, y= 'classes', x='probability (%)', orientation = 'h', text = 'probability (%)',
-                  title = 'Probability of grape disease class')
+    fig = px.bar(df,y='classes',x='probability (%)',orientation ='h', text='probability (%)',
+                  title='Probability of grape disease class')
     st.plotly_chart(fig)
 
 def main():
     st.set_page_config(
         page_title="Classify vine leaves"
     )
-    st.write("# Classify vine leaves!   ")
+    st.write("# Classify vine leaves!")
     #load model
     interpreter = load_model()
     #load image 
     image = load_image
     #classify
     if image is not None:
-        forecast(interpreter, image)
+
+        forecast(interpreter,image)
 
 if __name__ == "__main___":
     main()
