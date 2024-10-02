@@ -9,8 +9,8 @@ import plotly.express as px
 
 @st.cache_resource
 def load_model():
-    #https://drive.google.com/file/d/1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h/view?usp=drive_link
-    url = 'https://drive.google.com/file/d/1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h/view?usp=drive_link'
+    #https://drive.google.com/file/d/1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h'
 
     gdown.download(url, 'model_16bits.tflite')
     interpreter = tf.lite.Intepreter(model_path = 'model_16bits.tflite')
@@ -69,4 +69,3 @@ def main():
 
 if __name__ == "__main___":
     main()
-    
