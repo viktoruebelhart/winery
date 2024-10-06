@@ -13,7 +13,7 @@ def load_model():
     url = 'https://drive.google.com/uc?id=1NSsQconZZViIPqI5Z-2tWqK1AVXoN-0h'
 
     gdown.download(url, 'model_16bits.tflite')
-    interpreter = tf.lite.Intepreter(model_path = 'model_16bits.tflite')
+    interpreter = tf.lite.Interpreter(model_path ='model_16bits.tflite')
     interpreter.allocate_tensors()
     return interpreter
     
@@ -61,11 +61,11 @@ def main():
     #load model
     interpreter = load_model()
     #load image 
-    image = load_image
+    image = load_image()
     #classify
     if image is not None:
 
         forecast(interpreter,image)
 
-if __name__ == "__main___":
+if __name__ == "__main__":
     main()
